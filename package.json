@@ -1,7 +1,11 @@
 {
-  "name": "learn",
+  "name": "@victortolbert/learn",
+  "description": "Learn Storybook design system",
   "version": "0.1.0",
-  "private": true,
+  "main": "dist/index.js",
+  "repository": "https://github.com/victortolbert/learn.git",
+  "license": "MIT",
+  "author": "Victor Tolbert <victor.tolbert@me.com>",
   "dependencies": {
     "polished": "3.4.1",
     "prop-types": "15.7.2",
@@ -12,15 +16,23 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "BABEL_ENV=production babel src -d dist",
+    "prepare": "yarn build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public",
+    "build-storybook-docs": "build-storybook -s public --docs",
+    "release": "auto shipit",
     "chromatic": "CHROMATIC_APP_CODE=64u9lscfvpk chromatic"
   },
   "eslintConfig": {
     "extends": "react-app"
+  },
+  "babel": {
+    "presets": [
+      "react-app"
+    ]
   },
   "browserslist": {
     "production": [
@@ -35,13 +47,16 @@
     ]
   },
   "devDependencies": {
+    "@babel/cli": "^7.6.4",
     "@storybook/addon-a11y": "^5.2.5",
     "@storybook/addon-actions": "^5.2.5",
+    "@storybook/addon-docs": "5.2.5",
     "@storybook/addon-knobs": "^5.2.5",
     "@storybook/addon-links": "^5.2.5",
     "@storybook/addon-storysource": "5.2.5",
     "@storybook/addons": "^5.2.5",
     "@storybook/react": "^5.2.5",
+    "auto": "^7.12.4",
     "prettier": "1.18.2",
     "storybook-chromatic": "3.0.3"
   }
